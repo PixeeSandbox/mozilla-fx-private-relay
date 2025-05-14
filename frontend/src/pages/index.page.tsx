@@ -16,7 +16,7 @@ import { isBundleAvailableInCountry } from "../functions/getPlan";
 import { FaqAccordionItem } from "../components/landing/FaqAccordion";
 import { Reviews } from "../components/landing/Reviews";
 import { PlanMatrix } from "../components/landing/PlanMatrix";
-import { BundleBanner } from "../components/landing/BundleBanner";
+import { MegaBundleBanner } from "../components/landing/MegaBundleBanner";
 import { useFlaggedAnchorLinks } from "../hooks/flaggedAnchorLinks";
 import { useL10n } from "../hooks/l10n";
 import { HighlightedFeatures } from "../components/landing/HighlightedFeatures";
@@ -67,7 +67,7 @@ const Home: NextPage = () => {
         </section>
         {isBundleAvailableInCountry(runtimeData.data) && (
           <section id="vpn_promo" className={styles["bundle-banner-section"]}>
-            <BundleBanner runtimeData={runtimeData.data} />
+            <MegaBundleBanner runtimeData={runtimeData.data} />
           </section>
         )}
         <section id="how_it_works" className={styles["how-it-works-wrapper"]}>
