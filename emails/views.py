@@ -117,7 +117,7 @@ def reply_requires_premium_test(request):
         "SITE_ORIGIN": settings.SITE_ORIGIN,
     }
     for param in request.GET:
-        email_context[param] = request.GET.get(param)
+        email_context[param] = escape(request.GET.get(param))
         if param == "forwarded" and request.GET[param] == "True":
             email_context[param] = True
 
@@ -311,7 +311,7 @@ def sns_inbound(request):
     error_details = validate_sns_arn_and_type(topic_arn, message_type)
     if error_details:
         logger.error("validate_sns_arn_and_type_error", extra=error_details)
-        return HttpResponse(error_details["error"], status=400)
+        return HttpResponse(escape(error_details["error"]), status=400)
 
     return _sns_inbound_logic(topic_arn, message_type, verified_json_body)
 
